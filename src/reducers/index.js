@@ -1,5 +1,6 @@
 import { CREATE_TASK } from "../actions/types";
 import {  EDIT_TASK } from "../actions/types";
+import {  REMOVE_TASK } from "../actions/types";
 
 const intialState = [
     /****************************************
@@ -66,6 +67,12 @@ const tasks = (state = { tasks: intialState }, action) => {
             return {
                 tasks: state.tasks.concat(action.payload),
             };
+        }
+
+        case REMOVE_TASK : {
+            return {
+                tasks: state.tasks.filter(task => task.id !== action.id)
+            }
         }
         default:
             return state;
